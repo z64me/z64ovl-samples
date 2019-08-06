@@ -7,7 +7,7 @@
  *
  **/
 
-#include <z64ovl/oot_debug.h>
+#include <z64ovl/oot/debug.h>
 
 // Actor Information
 #define OBJ_ID         23           // primary object dependency (change if needed)
@@ -17,7 +17,6 @@
 
 typedef struct {
 	z64_actor_t actor;
-	z64_debug_text_t debug_text;
 } entity_t;
 
 static void init(entity_t *en, z64_global_t *global)
@@ -37,7 +36,7 @@ static void draw(entity_t *en, z64_global_t *global)
 {
 	uint32_t *x = (uint32_t*) GLOBAL_IS_NIGHT;
 	uint32_t dl[] = { DL_DAY, DL_NIGHT };
-	draw_static_dlist( global, dl[*x] );
+	draw_dlist_opa( global, dl[*x] );
 }
 
 /* .data */
