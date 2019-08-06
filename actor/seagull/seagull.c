@@ -20,7 +20,7 @@
  * z = (radius/64)-1
  **/
 
-#include <z64ovl/oot_debug.h>     // change to `oot_u_10.h` or similar to change build targets
+#include <z64ovl/oot/debug.h>     // change to `u10.h` or similar to change build targets
 
 // Actor Information
 #define OBJ_ID         134        // primary object dependency (change if needed)
