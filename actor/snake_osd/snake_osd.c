@@ -205,14 +205,14 @@ void play(entity_t *en, z64_global_t *global)
 	/* L button ends the game */
 	if( en->enabled && (input & INPUT_L_TRIGGER) ) {
 		en->enabled = 0;
-		unsigned char *x = (unsigned char*)INTERFACE_TOGGLE;
+		unsigned char *x = (unsigned char*)Z64GL_INTERFACE_ON;
 		*x = 0x00;
 		return;
 	}
 	
 	/* D-Pad up enables the game */
 	else if( !en->enabled && (input & INPUT_D_UP) ) {
-		unsigned char *x = (unsigned char*)INTERFACE_TOGGLE;
+		unsigned char *x = (unsigned char*)Z64GL_INTERFACE_ON;
 		*x = 0x01;
 		en->enabled = 1;
 	}
