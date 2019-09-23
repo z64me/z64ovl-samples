@@ -6,7 +6,7 @@
  *
  * by Dr.Disco <z64.me>
  *
- * controls
+ * Controls
  * - In a map containing this actor, press D-Pad up to
  *   start a game of Snake.
  * - Then use the D-Pad to control the snake.
