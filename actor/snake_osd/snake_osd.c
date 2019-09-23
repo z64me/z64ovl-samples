@@ -198,8 +198,8 @@ void init(entity_t *en, z64_global_t *global)
 }
 
 static
-void play(entity_t *en, z64_global_t *global) {
-	
+void play(entity_t *en, z64_global_t *global)
+{
 	z64_button_t input = global->common.controller[0].pressEdge.button;
 	
 	/* L button ends the game */
