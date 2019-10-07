@@ -200,10 +200,10 @@ void init(entity_t *en, z64_global_t *global)
 static
 void play(entity_t *en, z64_global_t *global)
 {
-	z64_button_t input = global->common.controller[0].pressEdge.button;
+	z64_controller_t *input = &global->common.input[0].raw;
 	
 	/* L button ends the game */
-	if( en->enabled && (input & INPUT_L_TRIGGER) ) {
+	if( en->enabled && (input->l) ) {
 		en->enabled = 0;
 		unsigned char *x = (unsigned char*)Z64GL_INTERFACE_ON;
 		*x = 0x00;
@@ -211,7 +211,7 @@ void play(entity_t *en, z64_global_t *global)
 	}
 	
 	/* D-Pad up enables the game */
-	else if( !en->enabled && (input & INPUT_D_UP) ) {
+	else if( !en->enabled && (input->du) ) {
 		unsigned char *x = (unsigned char*)Z64GL_INTERFACE_ON;
 		*x = 0x01;
 		en->enabled = 1;
@@ -222,13 +222,13 @@ void play(entity_t *en, z64_global_t *global)
 		return;
 	
 	/* test input and update snake's direction likewise */
-	if(input & INPUT_D_LEFT && ( en->direction != INPUT_D_RIGHT ) )
+	if(input->dl && ( en->direction != SNAKE_RIGHT ) )
 		en->direction = SNAKE_LEFT;
-	else if(input & INPUT_D_RIGHT && ( en->direction != INPUT_D_LEFT ) )
+	else if(input->dr && ( en->direction != SNAKE_LEFT ) )
 		en->direction = SNAKE_RIGHT;
-	if(input & INPUT_D_UP && ( en->direction != INPUT_D_DOWN ) )
+	if(input->du && ( en->direction != SNAKE_DOWN ) )
 		en->direction = SNAKE_UP;
-	else if(input & INPUT_D_DOWN && ( en->direction != SNAKE_UP ) )
+	else if(input->dd && ( en->direction != SNAKE_UP ) )
 		en->direction = SNAKE_DOWN;
 	
 	/* update timer and random seed */
@@ -280,7 +280,7 @@ void draw(entity_t *en, z64_global_t *global)
 			tile.x = 32 * en->food.x;
 			tile.y = 32 * en->food.y;
 		}
-		draw_ui_sprite(&OVERLAY, &texture, &tile);
+		zh_draw_ui_sprite(&OVERLAY, &texture, &tile);
 	}
 }
 
