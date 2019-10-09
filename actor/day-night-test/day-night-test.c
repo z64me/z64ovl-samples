@@ -34,7 +34,7 @@ static void dest(entity_t *en, z64_global_t *global)
   
 static void draw(entity_t *en, z64_global_t *global)
 {
-	uint32_t *x = (uint32_t*) GLOBAL_IS_NIGHT;
+	uint32_t *x = (uint32_t*) Z64GL_IS_NIGHT;
 	uint32_t dl[] = { DL_DAY, DL_NIGHT };
 	draw_dlist_opa( global, dl[*x] );
 }
